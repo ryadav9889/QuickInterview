@@ -24,6 +24,10 @@ const candidateInterviewerSchema = new mongoose.Schema({
     shortList:{
         type:Number,
         required:false
+    },
+    videoURL:{
+        type:String,
+        required:false
     }
 },{timestamps:true});
 

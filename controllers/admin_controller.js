@@ -95,7 +95,8 @@ module.exports.addCandidateOrInterviewer = async function(req,res){
       password: req.body.password,
       userType: req.body.userType,
       category: req.body.category,
-      shortList: 0
+      shortList: 0,
+      videoURL:null
   })
 
   return res.status(200).json({

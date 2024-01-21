@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const uuid = require('uuid');
 
-
-
-
 const testSchema = new mongoose.Schema({
     companyName:{
         type:String,
