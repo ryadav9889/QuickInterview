@@ -1,5 +1,6 @@
 const Admin = require("../Modal/adminLoginModal")
 const CandidateInterviewer = require("../Modal/CandidateInterviewerModal")
+const CreateTest = require("../Modal/testModal")
 const jwt = require("jsonwebtoken")
 
 module.exports.signIn = async function(req,res){
@@ -93,28 +94,48 @@ module.exports.addCandidateOrInterviewer = async function(req,res){
       email: req.body.email,
       password: req.body.password,
       userType: req.body.userType,
-      category: req.body.category
+      category: req.body.category,
+      shortList: 0
   })
 
   return res.status(200).json({
     status: 1,
     message: 'Candidate Or Interviewer are registered Successfully!!',
-    data: {
-      CandidateInterviewer: candidateInterviewer
-    }
+    data: candidateInterviewer
+    
   });
 
    } 
-    
-   
-
- } catch {
+ } catch(error) {
     console.log(error);
     return res.status(401).json({
       message: 'Internal Server Error',
     });
   }
+}
+
+module.exports.createTest = async function(req,res){
+
+    try{
+       test = await CreateTest.create({
+        companyName: req.body.companyName,
+        category: req.body.category,
+        question: req.body.question
+       }) 
+    return res.status(200).json({
+      status: 1,
+      message: 'Test created Successfully!!',
+      data: test
       
+    });
+       
+    } catch(error){
+      console.log(error);
+     return res.status(401).json({
+      message: 'Internal Server Error',
+    });
+    }
+
 
 
 }

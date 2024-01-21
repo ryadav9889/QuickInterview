@@ -3,23 +3,27 @@ const mongoose = require('mongoose');
 const candidateInterviewerSchema = new mongoose.Schema({
     name:{
         type:String,
-        require:true
+        required: true
     },
     email:{
         type:String,
-        require:true
+        required:true
     },
     password:{
         type:String,
-        require:true     
+        required:true     
     },
     userType:{
         type:Number,
-        require:true
+        required:true
     },
     category:{
         type:String,
-        require:true
+        required:true
+    },
+    shortList:{
+        type:Number,
+        required:false
     }
 },{timestamps:true});
 
